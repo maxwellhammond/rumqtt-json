@@ -1,10 +1,12 @@
+//The goal of this file is to create a library of functions for the podcontroller to use
+//
 use rumqttc::{AsyncClient, ClientError, Event, EventLoop, Incoming, MqttOptions, QoS};
 use tokio::time;
 use std::sync::{Arc, Mutex};
 use std::time::Duration;
 
 //This function can be called after the establishclient() function. Pass this function the event where 
-//let event = eventloop.poll().await.unwrap();
+//declaration of event : let event = eventloop.poll().await.unwrap();
 pub async fn pollevents(event: Event) {
     let messages = Arc::new(Mutex::new(Vec::new()));
     let messages_clone = Arc::clone(&messages);
@@ -29,7 +31,7 @@ pub async fn pollevents(event: Event) {
 
 //This is the first function that should be called when starting MQTT connection
 //Make sure to seperate client and eventloop when calling this function
-//let (client, mut eventloop) = establishclient(pod.clone(), broker_address, port).await;
+//declaration of client and eventloop : let (client, mut eventloop) = establishclient(pod.clone(), broker_address, port).await;
 pub async fn establishclient(pod: String, address: String, port: u16) -> (rumqttc::AsyncClient, EventLoop) {
     //establish client with options
     let mut mqttoptions = MqttOptions::new(pod, address, port);

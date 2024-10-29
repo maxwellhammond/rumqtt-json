@@ -54,5 +54,5 @@ pub async fn sub (client: AsyncClient, topic: String) {
 pub async fn publishmessage (message: String, client: AsyncClient, topic: String) {
     let payload = message.trim();
     client.publish(topic, QoS::ExactlyOnce, false, payload).await.unwrap();
-    time::sleep(Duration::from_millis(1000)).await;
+    time::sleep(Duration::from_millis(250)).await;
 }

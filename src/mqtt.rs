@@ -1,5 +1,4 @@
 //The goal of this file is to create a library of functions for the podcontroller to use
-//
 use rumqttc::{AsyncClient, ClientError, Event, EventLoop, Incoming, MqttOptions, QoS};
 use tokio::time;
 use std::sync::{Arc, Mutex};
